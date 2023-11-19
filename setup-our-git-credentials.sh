@@ -56,50 +56,17 @@ githubdir="yurikuit"
 echo "-----------------------------------------------------------------------------"
 echo "this is project https://github.com/$githubdir/$project"
 echo "-----------------------------------------------------------------------------"
+git config --global pull.rebase false
+git config --global user.name "Yuri Kuit"
+git config --global user.email "yuri.kuit+github@gmail.com"
+sudo git config --system core.editor nano
+#git config --global credential.helper cache
+#git config --global credential.helper 'cache --timeout=32000'
+git config --global push.default simple
 
-echo
-tput setaf 1
-echo "################################################################"
-echo "#####  Choose wisely - one time setup after clean install   ####"
-echo "################################################################"
-tput sgr0
-echo
-echo "Select the correct desktop"
-echo
-echo "0.  Do nothing"
-echo "1.  Yuri"
-echo "Type the number..."
+git remote set-url origin git@github.com:$githubdir/$project
 
-read CHOICE
-
-case $CHOICE in
-
-    0 )
-      echo
-      echo "########################################"
-      echo "We did nothing as per your request"
-      echo "########################################"
-      echo
-      ;;
-
-    1 )
-			git config --global pull.rebase false
-			git config --global push.default simple
-			git config --global user.name "yurikuit"
-			git config --global user.email "yuri.kuit+github@gmail.com"
-			sudo git config --system core.editor nano
-			git config --global credential.helper cache
-			git config --global credential.helper 'cache --timeout=32000'
-      git remote set-url origin git@github.com:$githubdir/$project
-      echo
-      echo "Everything set"
-      ;;
-    * )
-      echo "#################################"
-      echo "Choose the correct number"
-      echo "#################################"
-      ;;
-esac
+echo "Everything set"
 
 echo "################################################################"
 echo "###################    T H E   E N D      ######################"
